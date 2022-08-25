@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
-const userSchema = require('../models/user');
 
-const welcome = (req, res) => {
-	res.send("Welcome to the ay ay ay");
-};
+const userSchema = require('../models/user');
 
 const createUser = (req, res) => {
 	const user = req.body;
@@ -19,6 +16,5 @@ const createUser = (req, res) => {
 };
 
 module.exports = {
-	welcome,
 	createUser,
 };
