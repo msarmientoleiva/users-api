@@ -3,11 +3,12 @@ const registerValidationSchema = require('../validations/registerSchema');
 
 const createUser = async (req, res) => {
 	const user = req.body;
-	registerValidationSchema
-		.validate(user);
+	if (registerValidationSchema.validate(user).error) {
+		return res.status(500).send('error on validations')
+	}
 	await userSchema(user)
 		.save()
-		.then((data) => {
+		.then(() => {
 			res.send("user created successfully");
 		})
 		.catch((err) => {
