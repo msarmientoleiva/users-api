@@ -1,8 +1,10 @@
 const userSchema = require('../models/user');
+const registerValidationSchema = require('../validations/registerSchema');
 
 const createUser = async (req, res) => {
 	const user = req.body;
-
+	registerValidationSchema
+		.validate(user);
 	await userSchema(user)
 		.save()
 		.then((data) => {
